@@ -1,0 +1,13 @@
+# Dataset
+data/*.csv
+
+# Generated results
+results/*.csv
+results/*.png
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
