@@ -1,3 +1,15 @@
+---
+title: Spotify Music Feature Reduction
+emoji: 🎵
+colorFrom: green
+colorTo: green
+sdk: streamlit
+sdk_version: 1.30.0
+app_file: app.py
+pinned: false
+license: mit
+---
+
 # Spotify Music Feature Reduction using PCA
 
 ## Project Overview
@@ -258,9 +270,9 @@ SpotifyMusicReduction/
 The project includes an interactive web application built with **Streamlit** for visual exploration, model evaluation, and track discovery.
 
 - **Application Framework**: [Streamlit](https://streamlit.io/)
-- **Deployment Platform**: Streamlit Community Cloud (via GitHub repository)
-- **Status**: Tested locally and ready for cloud deployment
-- **Public URL Placeholder**: `[Streamlit App (Deployment Pending Review)]`
+- **Deployment Platform**: Hugging Face Spaces (Streamlit SDK) & Streamlit Community Cloud
+- **Space Hardware**: Free CPU Tier (2 vCPU, 16 GB RAM)
+- **Status**: Tested locally and pre-configured for cloud deployment
 
 ### How to Run Locally
 
@@ -273,12 +285,13 @@ streamlit run app.py
 ```
 
 The application runs on `http://localhost:8501` and provides:
-1. **Executive Dashboard**: KPI metrics, pipeline workflow, and cluster share charts.
-2. **PCA Reduction Analysis**: Cumulative explained variance interactive chart and loadings breakdown.
-3. **K-Means Evaluation**: Side-by-side interactive Elbow and Silhouette score curves with data-backed reasoning.
-4. **Cluster Profiles**: Dynamic radar charts and top genre breakdowns for each cluster.
-5. **2D PCA Cluster Map**: Interactive scatter plot with cluster filters and point sampling.
-6. **Track Explorer**: Live search by song or artist name, genre filtering, and cluster inspection.
+1. **Executive Dashboard**: High-level KPI metrics, pipeline architecture, and cluster share distributions.
+2. **PCA Reduction Analysis**: Scree plot, cumulative explained variance curve, and feature loadings breakdown.
+3. **K-Means Evaluation**: Interactive Elbow and Silhouette score curves with data-backed selection rationale.
+4. **Cluster Profiles**: Single-cluster deep dive and multi-cluster audio fingerprint radar comparisons.
+5. **PCA Space Navigator (2D & 3D)**: Interactive 2D scatter and 3D WebGL point clouds with 360° rotation and zoom.
+6. **Interactive Track Explorer**: Live search, official Spotify player embed, and PCA-based nearest-neighbor song recommendations.
+7. **Run Your Own PCA**: Interactive uploader for custom CSV datasets (Spotify audio or generic numerical data) with automated guardrails and CSV exports.
 
 ---
 
