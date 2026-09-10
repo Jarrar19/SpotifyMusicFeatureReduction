@@ -12,6 +12,12 @@ license: mit
 
 # Spotify Music Feature Reduction using PCA
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://spotifymusicfeaturereduction.streamlit.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/Jarrar19/SpotifyMusicFeatureReduction)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+
+> 🚀 **Live Interactive Web Application:** [https://spotifymusicfeaturereduction.streamlit.app/](https://spotifymusicfeaturereduction.streamlit.app/)
+
 ## Project Overview
 
 Music datasets contain a lot of information about each song. A Spotify track, for example, can be described using features such as danceability, energy, loudness, tempo, valence, acousticness, and instrumentalness.
@@ -269,10 +275,10 @@ SpotifyMusicReduction/
 
 The project includes an interactive web application built with **Streamlit** for visual exploration, model evaluation, and track discovery.
 
+- **🌐 Live Web Application**: [https://spotifymusicfeaturereduction.streamlit.app/](https://spotifymusicfeaturereduction.streamlit.app/)
 - **Application Framework**: [Streamlit](https://streamlit.io/)
-- **Deployment Platform**: Hugging Face Spaces (Streamlit SDK) & Streamlit Community Cloud
-- **Space Hardware**: Free CPU Tier (2 vCPU, 16 GB RAM)
-- **Status**: Tested locally and pre-configured for cloud deployment
+- **Cloud Hosting Platform**: [Streamlit Community Cloud](https://streamlit.io/cloud)
+- **Status**: 🟢 **Live in Production** (Desktop & Mobile-Optimized)
 
 ### How to Run Locally
 
