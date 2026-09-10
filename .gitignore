@@ -14,6 +14,7 @@ results/*.png
 !results/kmeans_elbow_scores.csv
 !results/kmeans_silhouette_scores.csv
 !results/kmeans_clustered_sample.csv
+!results/generic_sample_customer_data.csv
 !results/kmeans_elbow.png
 !results/kmeans_silhouette.png
 !results/kmeans_pca_clusters.png
