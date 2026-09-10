@@ -1,13 +1,29 @@
-# Dataset
+# Dataset (raw data stays out of version control)
 data/*.csv
 
-# Generated results
+# Generated results (large intermediate files stay local)
 results/*.csv
 results/*.png
 
-# Python
+# Whitelist deployment-required files for Streamlit Community Cloud
+!results/cleaned_pca_explained_variance.csv
+!results/cleaned_pca_loadings.csv
+!results/cluster_summary.csv
+!results/cluster_audio_feature_means.csv
+!results/cluster_genre_distribution.csv
+!results/kmeans_elbow_scores.csv
+!results/kmeans_silhouette_scores.csv
+!results/kmeans_clustered_sample.csv
+!results/kmeans_elbow.png
+!results/kmeans_silhouette.png
+!results/kmeans_pca_clusters.png
+!results/cluster_sizes.png
+!results/explained_variance.png
+
+# Python & Virtual Environments
 __pycache__/
 *.py[cod]
 .venv/
 venv/
 .env
+
