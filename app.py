@@ -57,6 +57,16 @@ st.markdown(
         margin-bottom: 12px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     }
+    .brand-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .brand-logo {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+    }
     .brand-title {
         font-size: 22px;
         font-weight: 800;
@@ -68,6 +78,19 @@ st.markdown(
         font-size: 13px;
         color: #64748B;
         margin: 0;
+    }
+    .brand-badge-box {
+        text-align: right;
+    }
+    .brand-badge {
+        background: #DCFCE7;
+        color: #15803D;
+        font-weight: 700;
+        font-size: 12px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        border: 1px solid #BBF7D0;
+        white-space: nowrap;
     }
 
     /* Top Navbar Segmented Control */
@@ -149,16 +172,7 @@ st.markdown(
         font-weight: 700;
     }
 
-    /* Audio Player & Recommendation Cards */
-    .player-card {
-        background: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 14px;
-        padding: 20px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-    }
+    /* Recommendation Cards */
     .recommendation-item {
         background: #F8FAFC;
         border: 1px solid #E2E8F0;
@@ -190,6 +204,142 @@ st.markdown(
         color: #0F172A;
         font-weight: 800;
         letter-spacing: -0.5px;
+    }
+
+    /* ============================================================
+       MOBILE & RESPONSIVE DESIGN (Screens <= 768px)
+       ============================================================ */
+    @media (max-width: 768px) {
+        /* Eliminate huge empty top gap on mobile screens */
+        .block-container {
+            padding-top: 1rem !important;
+            padding-bottom: 2rem !important;
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+        }
+
+        /* Top Header: Responsive Stack */
+        .brand-header-box {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            padding: 12px 14px !important;
+            gap: 10px !important;
+            margin-bottom: 10px !important;
+        }
+        .brand-left {
+            gap: 10px !important;
+        }
+        .brand-logo {
+            width: 28px !important;
+            height: 28px !important;
+        }
+        .brand-title {
+            font-size: 17px !important;
+            line-height: 1.25 !important;
+        }
+        .brand-subtitle {
+            font-size: 11px !important;
+            line-height: 1.35 !important;
+        }
+        .brand-badge-box {
+            width: 100% !important;
+            text-align: left !important;
+        }
+        .brand-badge {
+            display: inline-block !important;
+            font-size: 10.5px !important;
+            padding: 3px 8px !important;
+            white-space: normal !important;
+        }
+
+        /* Top Navbar: Horizontal Swipeable Pill Carousel on Mobile */
+        div[data-testid="stRadio"] > div {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            padding: 6px 8px !important;
+            gap: 6px !important;
+            border-radius: 12px !important;
+            margin-bottom: 16px !important;
+            scrollbar-width: none !important;
+        }
+        div[data-testid="stRadio"] > div::-webkit-scrollbar {
+            display: none !important;
+        }
+        div[data-testid="stRadio"] label {
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
+            padding: 6px 12px !important;
+            font-size: 12px !important;
+            border-radius: 8px !important;
+        }
+
+        /* Metric Cards: 2-Column Responsive Grid on Mobile */
+        div[data-testid="stHorizontalBlock"]:has(.metric-card) {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+        }
+        div[data-testid="stHorizontalBlock"]:has(.metric-card) > div[data-testid="column"] {
+            flex: 1 1 calc(50% - 6px) !important;
+            min-width: calc(50% - 6px) !important;
+            max-width: 100% !important;
+        }
+        .metric-card {
+            padding: 10px 12px !important;
+            margin-bottom: 4px !important;
+            border-radius: 10px !important;
+        }
+        .metric-value {
+            font-size: 20px !important;
+        }
+        .metric-label {
+            font-size: 10px !important;
+        }
+
+        /* Also adapt native st.metric layout */
+        div[data-testid="stHorizontalBlock"]:has(div[data-testid="stMetric"]) {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+        }
+        div[data-testid="stHorizontalBlock"]:has(div[data-testid="stMetric"]) > div[data-testid="column"] {
+            flex: 1 1 calc(50% - 6px) !important;
+            min-width: calc(50% - 6px) !important;
+        }
+
+        /* Headings scale down on mobile */
+        h1 {
+            font-size: 1.5rem !important;
+            letter-spacing: -0.3px !important;
+        }
+        h2, .section-title {
+            font-size: 1.25rem !important;
+        }
+        h3 {
+            font-size: 1.1rem !important;
+        }
+
+        /* Prevent overflow on tables & preformatted text */
+        .stDataFrame, div[data-testid="stTable"], pre {
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+        }
+
+        /* Plotly charts fit mobile screen nicely */
+        .js-plotly-plot, .plot-container {
+            max-height: 420px !important;
+        }
+
+        /* Recommendation cards */
+        .recommendation-item {
+            padding: 10px 12px !important;
+            font-size: 13px !important;
+        }
     }
     </style>
     """,
@@ -295,15 +445,15 @@ df_var, df_summary, df_audio_means, df_genres, df_elbow, df_sil, df_loadings = l
 st.markdown(
     """
     <div class="brand-header-box">
-        <div style="display:flex; align-items:center; gap:12px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" width="36" />
+        <div class="brand-left">
+            <img class="brand-logo" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" width="34" />
             <div>
                 <h2 class="brand-title">Spotify Music Feature Reduction</h2>
                 <p class="brand-subtitle">Unsupervised Dimensionality Reduction (PCA) & K-Means Clustering Pipeline</p>
             </div>
         </div>
-        <div style="text-align:right;">
-            <span style="background:#DCFCE7; color:#15803D; font-weight:700; font-size:12px; padding:4px 12px; border-radius:20px; border:1px solid #BBF7D0;">
+        <div class="brand-badge-box">
+            <span class="brand-badge">
                 89,741 Tracks &bull; 9 Features &bull; 7 PCs &bull; K=7
             </span>
         </div>
@@ -460,7 +610,11 @@ if selected_page == "📊 Dashboard":
             )
             fig_bar.update_traces(texttemplate="%{text:,}", textposition="outside")
             fig_bar.update_layout(showlegend=False, template="plotly_white", height=380)
-            st.plotly_chart(fig_bar, use_container_width=True)
+            st.plotly_chart(
+                fig_bar,
+                use_container_width=True,
+                config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+            )
         with c2:
             fig_pie = px.pie(
                 df_summary,
@@ -471,7 +625,11 @@ if selected_page == "📊 Dashboard":
                 hole=0.4,
             )
             fig_pie.update_layout(template="plotly_white", height=380)
-            st.plotly_chart(fig_pie, use_container_width=True)
+            st.plotly_chart(
+                fig_pie,
+                use_container_width=True,
+                config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+            )
 
 
 # ============================================================
@@ -527,7 +685,11 @@ elif selected_page == "📉 PCA Analysis":
                 legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01),
                 height=420,
             )
-            st.plotly_chart(fig_var, use_container_width=True)
+            st.plotly_chart(
+                fig_var,
+                use_container_width=True,
+                config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+            )
 
     with col2:
         st.subheader("Variance Breakdown")
@@ -576,7 +738,11 @@ elif selected_page == "📐 K-Means Evaluation":
             fig_elb.update_traces(line_color="#1DB954", marker=dict(size=9, color="#1DB954"))
             fig_elb.add_vline(x=7, line_dash="dash", line_color="orange", annotation_text="Elbow Inflection (K=7)")
             fig_elb.update_layout(template="plotly_white", height=380)
-            st.plotly_chart(fig_elb, use_container_width=True)
+            st.plotly_chart(
+                fig_elb,
+                use_container_width=True,
+                config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+            )
 
         with col2:
             fig_sil = px.line(
@@ -590,7 +756,11 @@ elif selected_page == "📐 K-Means Evaluation":
             fig_sil.update_traces(line_color="#4A90E2", marker=dict(size=9, color="#4A90E2"))
             fig_sil.add_vline(x=7, line_dash="dash", line_color="orange", annotation_text="Multi-Cluster Peak (K=7)")
             fig_sil.update_layout(template="plotly_white", height=380)
-            st.plotly_chart(fig_sil, use_container_width=True)
+            st.plotly_chart(
+                fig_sil,
+                use_container_width=True,
+                config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+            )
 
         st.markdown("### Numerical Evaluation Table")
         display_eval = eval_df.rename(
@@ -693,8 +863,13 @@ elif selected_page == "🎯 Cluster Profiles":
                     template="plotly_white",
                     title=f"Audio Feature Radar: Cluster {selected_c}",
                     height=380,
+                    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 )
-                st.plotly_chart(fig_radar, use_container_width=True)
+                st.plotly_chart(
+                    fig_radar,
+                    use_container_width=True,
+                    config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+                )
 
             with col_genres:
                 st.subheader(f"Top Genres in Cluster {selected_c}")
@@ -712,7 +887,11 @@ elif selected_page == "🎯 Cluster Profiles":
                     height=380,
                     yaxis=dict(autorange="reversed"),
                 )
-                st.plotly_chart(fig_genre, use_container_width=True)
+                st.plotly_chart(
+                    fig_genre,
+                    use_container_width=True,
+                    config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+                )
 
         with tab_multi:
             st.subheader("🧬 Multi-Cluster Audio DNA Comparison")
@@ -740,8 +919,13 @@ elif selected_page == "🎯 Cluster Profiles":
                 template="plotly_white",
                 title="All 7 Clusters Audio Fingerprint Radar",
                 height=480,
+                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
             )
-            st.plotly_chart(fig_multi_radar, use_container_width=True)
+            st.plotly_chart(
+                fig_multi_radar,
+                use_container_width=True,
+                config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+            )
 
             st.markdown("---")
             st.subheader("Comprehensive Audio Means Comparison Table")
@@ -782,22 +966,22 @@ elif selected_page == "🗺️ 2D/3D Cluster Map":
     df_tracks = load_clustered_tracks(sample_for_interactive=True)
 
     if df_tracks is not None:
-        ctrl_col1, ctrl_col2 = st.columns([1.8, 1.2])
-        with ctrl_col1:
-            proj_mode = st.radio(
-                "Select Dimensionality View:",
-                ["🗺️ 2D Cluster Map (PC1 vs PC2)", "🌐 3D Interactive Space (PC1 vs PC2 vs PC3)"],
-                horizontal=True,
-                key="pca_proj_mode",
-            )
+        proj_mode = st.radio(
+            "Select Dimensionality View:",
+            ["🗺️ 2D Cluster Map (PC1 vs PC2)", "🌐 3D Interactive Space (PC1 vs PC2 vs PC3)"],
+            horizontal=True,
+            key="pca_proj_mode",
+        )
 
-        c1, c2 = st.columns([3.2, 1])
-        with c2:
-            st.markdown("#### Filter Clusters")
-            all_clusters = sorted(df_tracks["cluster"].unique())
-            active_clusters = st.multiselect("Display Clusters:", all_clusters, default=all_clusters, key="pca_active_clusters")
-            max_points = min(5000, len(df_tracks))
-            sample_size = st.slider("Display Points:", 1000, max_points, min(3000, max_points), step=500, key="pca_display_slider")
+        all_clusters = sorted(df_tracks["cluster"].unique())
+        max_points = min(5000, len(df_tracks))
+
+        with st.expander("⚙️ Filter Clusters & Sample Size", expanded=False):
+            fc1, fc2 = st.columns([2, 1])
+            with fc1:
+                active_clusters = st.multiselect("Display Clusters:", all_clusters, default=all_clusters, key="pca_active_clusters")
+            with fc2:
+                sample_size = st.slider("Display Points:", 1000, max_points, min(3000, max_points), step=500, key="pca_display_slider")
 
         matched_tracks = df_tracks[df_tracks["cluster"].isin(active_clusters)]
 
@@ -809,55 +993,64 @@ elif selected_page == "🗺️ 2D/3D Cluster Map":
                 random_state=42,
             )
 
-            with c1:
-                hover_cols = [c for c in ["track_name", "artists", "track_genre", "popularity"] if c in filtered_df.columns]
+            hover_cols = [c for c in ["track_name", "artists", "track_genre", "popularity"] if c in filtered_df.columns]
 
-                if proj_mode == "🗺️ 2D Cluster Map (PC1 vs PC2)":
-                    fig_scatter = px.scatter(
+            if proj_mode == "🗺️ 2D Cluster Map (PC1 vs PC2)":
+                fig_scatter = px.scatter(
+                    filtered_df,
+                    x="PC1",
+                    y="PC2",
+                    color=filtered_df["cluster"].astype(str),
+                    color_discrete_sequence=CLUSTER_COLORS,
+                    hover_data=hover_cols,
+                    labels={"color": "Cluster"},
+                    title=f"2D PCA Projection ({len(filtered_df):,} Tracks — 47.99% Cumulative Variance)",
+                    opacity=0.65,
+                )
+                fig_scatter.update_layout(
+                    template="plotly_white",
+                    height=480,
+                    xaxis_title="PC1: Loudness & Energy vs. Acousticness (32.12% Var)",
+                    yaxis_title="PC2: Danceability & Valence (15.87% Var)",
+                    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+                )
+                st.plotly_chart(
+                    fig_scatter,
+                    use_container_width=True,
+                    config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+                )
+            else:
+                if "PC3" in filtered_df.columns:
+                    fig_3d = px.scatter_3d(
                         filtered_df,
                         x="PC1",
                         y="PC2",
+                        z="PC3",
                         color=filtered_df["cluster"].astype(str),
                         color_discrete_sequence=CLUSTER_COLORS,
                         hover_data=hover_cols,
                         labels={"color": "Cluster"},
-                        title=f"2D PCA Projection ({len(filtered_df):,} Tracks — 47.99% Cumulative Variance)",
-                        opacity=0.65,
+                        title=f"3D PCA Interactive Space ({len(filtered_df):,} Tracks — 55.77% Cumulative Variance)",
+                        opacity=0.75,
                     )
-                    fig_scatter.update_layout(
+                    fig_3d.update_traces(marker=dict(size=3))
+                    fig_3d.update_layout(
                         template="plotly_white",
-                        height=580,
-                        xaxis_title="PC1: Loudness & Energy vs. Acousticness (32.12% Var)",
-                        yaxis_title="PC2: Danceability & Valence (15.87% Var)",
+                        height=520,
+                        scene=dict(
+                            xaxis_title="PC1 (32.12%)",
+                            yaxis_title="PC2 (15.87%)",
+                            zaxis_title="PC3 (7.78%)",
+                        ),
+                        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                     )
-                    st.plotly_chart(fig_scatter, use_container_width=True)
+                    st.plotly_chart(
+                        fig_3d,
+                        use_container_width=True,
+                        config={"responsive": True, "displayModeBar": False},
+                    )
                 else:
-                    if "PC3" in filtered_df.columns:
-                        fig_3d = px.scatter_3d(
-                            filtered_df,
-                            x="PC1",
-                            y="PC2",
-                            z="PC3",
-                            color=filtered_df["cluster"].astype(str),
-                            color_discrete_sequence=CLUSTER_COLORS,
-                            hover_data=hover_cols,
-                            labels={"color": "Cluster"},
-                            title=f"3D PCA Interactive Space ({len(filtered_df):,} Tracks — 55.77% Cumulative Variance)",
-                            opacity=0.75,
-                        )
-                        fig_3d.update_traces(marker=dict(size=3.5))
-                        fig_3d.update_layout(
-                            template="plotly_white",
-                            height=640,
-                            scene=dict(
-                                xaxis_title="PC1 (32.12%)",
-                                yaxis_title="PC2 (15.87%)",
-                                zaxis_title="PC3 (7.78%)",
-                            ),
-                        )
-                        st.plotly_chart(fig_3d, use_container_width=True)
-                    else:
-                        st.info("PC3 not present in current view. Showing 2D projection.")
+                    st.info("PC3 not present in current view. Showing 2D projection.")
 
     elif IMG_PCA_CLUSTERS.exists():
         st.image(str(IMG_PCA_CLUSTERS), caption="K-Means Clusters in PCA Space (PC1 vs. PC2)", use_column_width=True)
@@ -921,38 +1114,36 @@ elif selected_page == "🔍 Track Explorer":
             )
             selected_track = track_options.iloc[selected_idx]
 
-            # Track Details & Player Card
-            st.markdown('<div class="player-card">', unsafe_allow_html=True)
-            col_info, col_player = st.columns([1.3, 1.2])
+            # Track Details & Player Card (Responsive bordered container)
+            with st.container(border=True):
+                col_info, col_player = st.columns([1.3, 1.2])
 
-            with col_info:
-                st.markdown(f"### 🎵 {selected_track['track_name']}")
-                st.markdown(
-                    f"**Artist:** {selected_track['artists']}  \n"
-                    f"**Album:** {selected_track.get('album_name', 'N/A')}  \n"
-                    f"**Genre:** `{selected_track.get('track_genre', 'N/A')}` &nbsp;|&nbsp; "
-                    f"**Popularity:** `{selected_track.get('popularity', 'N/A')}/100`"
-                )
-                c_num = int(selected_track["cluster"])
-                c_color = CLUSTER_COLORS[c_num % len(CLUSTER_COLORS)]
-                st.markdown(
-                    f'<div><span class="cluster-tag" style="background-color:{c_color}; color:#000000;">Cluster {c_num}</span> '
-                    f'<span style="color:#B3B3B3; font-size:13px;">PC1: {selected_track.get("PC1", 0.0):.2f} &bull; PC2: {selected_track.get("PC2", 0.0):.2f}</span></div>',
-                    unsafe_allow_html=True,
-                )
-
-            with col_player:
-                track_id_val = str(selected_track.get("track_id", "")).strip()
-                if track_id_val and len(track_id_val) == 22:
-                    st.markdown("**Live Spotify Preview:**")
-                    components.html(
-                        f"""<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/{track_id_val}?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>""",
-                        height=90,
+                with col_info:
+                    st.markdown(f"### 🎵 {selected_track['track_name']}")
+                    st.markdown(
+                        f"**Artist:** {selected_track['artists']}  \n"
+                        f"**Album:** {selected_track.get('album_name', 'N/A')}  \n"
+                        f"**Genre:** `{selected_track.get('track_genre', 'N/A')}` &nbsp;|&nbsp; "
+                        f"**Popularity:** `{selected_track.get('popularity', 'N/A')}/100`"
                     )
-                else:
-                    st.info("💡 Spotify live audio preview is available for tracks with authentic Spotify track IDs.")
+                    c_num = int(selected_track["cluster"])
+                    c_color = CLUSTER_COLORS[c_num % len(CLUSTER_COLORS)]
+                    st.markdown(
+                        f'<div><span class="cluster-tag" style="background-color:{c_color}; color:#000000;">Cluster {c_num}</span> '
+                        f'<span style="color:#64748B; font-size:13px;">PC1: {selected_track.get("PC1", 0.0):.2f} &bull; PC2: {selected_track.get("PC2", 0.0):.2f}</span></div>',
+                        unsafe_allow_html=True,
+                    )
 
-            st.markdown('</div>', unsafe_allow_html=True)
+                with col_player:
+                    track_id_val = str(selected_track.get("track_id", "")).strip()
+                    if track_id_val and len(track_id_val) == 22:
+                        st.markdown("**Live Spotify Preview:**")
+                        components.html(
+                            f"""<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/{track_id_val}?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>""",
+                            height=90,
+                        )
+                    else:
+                        st.info("💡 Spotify live audio preview is available for tracks with authentic Spotify track IDs.")
 
             # 2. PCA Recommendation Engine ("Find 5 Acoustically Similar Tracks")
             pc_cols = [f"PC{i+1}" for i in range(7) if f"PC{i+1}" in df_tracks.columns]
@@ -981,11 +1172,13 @@ elif selected_page == "🔍 Track Explorer":
 
                         st.markdown(
                             f'<div class="recommendation-item">'
-                            f'<strong>{sim_row["track_name"]}</strong> by <em>{sim_row["artists"]}</em> '
-                            f'<span class="cluster-tag" style="background-color:{c_color_sim}; color:#000; margin-left:8px;">Cluster {sim_row["cluster"]}</span> '
-                            f'<span style="color:#1DB954; font-weight:700; margin-left:8px;">{sim_row["match_score"]}% Match</span> '
-                            f'<span style="color:#888; font-size:12px; margin-left:6px;">(PCA Dist: {sim_row["pca_distance"]})</span>'
+                            f'<div><strong>{sim_row["track_name"]}</strong> by <em>{sim_row["artists"]}</em></div>'
+                            f'<div style="display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:4px;">'
+                            f'<span class="cluster-tag" style="background-color:{c_color_sim}; color:#000;">Cluster {sim_row["cluster"]}</span> '
+                            f'<span style="color:#1DB954; font-weight:700;">{sim_row["match_score"]}% Match</span> '
+                            f'<span style="color:#64748B; font-size:12px;">(PCA Dist: {sim_row["pca_distance"]})</span>'
                             f'{listen_link}'
+                            f'</div>'
                             f'</div>',
                             unsafe_allow_html=True,
                         )
@@ -1400,8 +1593,13 @@ elif selected_page == "🧪 Run Your Own PCA":
                     yaxis_title="Variance (%)",
                     template="plotly_white",
                     height=380,
+                    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 )
-                st.plotly_chart(fig_exp, use_container_width=True)
+                st.plotly_chart(
+                    fig_exp,
+                    use_container_width=True,
+                    config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+                )
 
                 # C. Cluster Summary (Sizes & Share)
                 st.subheader("2. K-Means Cluster Distribution")
@@ -1419,7 +1617,11 @@ elif selected_page == "🧪 Run Your Own PCA":
                     )
                     fig_sz.update_traces(textposition="outside")
                     fig_sz.update_layout(showlegend=False, template="plotly_white", height=350)
-                    st.plotly_chart(fig_sz, use_container_width=True)
+                    st.plotly_chart(
+                        fig_sz,
+                        use_container_width=True,
+                        config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+                    )
 
                 with col_c2:
                     st.markdown(f"##### {res_entity} Distribution Table")
@@ -1469,11 +1671,16 @@ elif selected_page == "🧪 Run Your Own PCA":
                     )
                     fig_scatter.update_layout(
                         template="plotly_white",
-                        height=520,
+                        height=480,
                         xaxis_title="PC1",
                         yaxis_title="PC2",
+                        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                     )
-                    st.plotly_chart(fig_scatter, use_container_width=True)
+                    st.plotly_chart(
+                        fig_scatter,
+                        use_container_width=True,
+                        config={"responsive": True, "displayModeBar": False, "scrollZoom": False},
+                    )
                 else:
                     st.info("Only 1 principal component was selected. 2D scatter plot requires at least 2 components.")
 
