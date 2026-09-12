@@ -1,14 +1,4 @@
----
-title: Spotify Music Feature Reduction
-emoji: 🎵
-colorFrom: green
-colorTo: green
-sdk: streamlit
-sdk_version: 1.30.0
-app_file: app.py
-pinned: false
-license: mit
----
+
 
 # Spotify Music Feature Reduction using PCA
 
